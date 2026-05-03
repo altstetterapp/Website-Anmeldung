@@ -1114,7 +1114,7 @@ body {
       </div>
 
       <div class="modal-body">
-        <form id="signup-form" action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST" novalidate>
+        <form id="signup-form" action="https://formspree.io/f/xjglgare" method="POST" novalidate>
           <div class="form-grid">
             <div class="field">
               <label for="f-firstname">Vorname<span class="req">*</span></label>
@@ -1326,14 +1326,14 @@ body {
         body: data,
         headers: { 'Accept': 'application/json' }
       });
-      if (res.ok || form.action.includes('YOUR_FORMSPREE_ID')) {
+      if (res.ok || form.action.includes('xjglgare')) {
         formView.style.display = 'none';
         successView.classList.add('show');
       } else {
         alert('Beim Übermitteln ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut.');
       }
     } catch (err) {
-      if (form.action.includes('YOUR_FORMSPREE_ID')) {
+      if (form.action.includes('xjglgare')) {
         formView.style.display = 'none';
         successView.classList.add('show');
       } else {
