@@ -1288,7 +1288,7 @@ body {
     if (e.key === 'Escape' && modal.classList.contains('open')) closeModal();
   });
 
-  /* Form validation + submit */
+/* Form validation + submit */
   function validate() {
     let ok = true;
     form.querySelectorAll('input, select').forEach(el => {
@@ -1326,19 +1326,15 @@ body {
         body: data,
         headers: { 'Accept': 'application/json' }
       });
-      if (res.ok || form.action.includes('xjglgare')) {
+      if (res.ok) {
         formView.style.display = 'none';
         successView.classList.add('show');
       } else {
-        alert('Beim Übermitteln ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut.');
+        const json = await res.json();
+        alert('Fehler: ' + (json.error || res.status));
       }
     } catch (err) {
-      if (form.action.includes('xjglgare')) {
-        formView.style.display = 'none';
-        successView.classList.add('show');
-      } else {
-        alert('Netzwerkfehler. Bitte versuchen Sie es erneut.');
-      }
+      alert('Netzwerkfehler: ' + err.message);
     } finally {
       submitBtn.disabled = false;
       submitBtn.querySelector('span').textContent = 'Anmeldung absenden';
